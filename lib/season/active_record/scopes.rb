@@ -1,4 +1,5 @@
 module Scopes
+
   def self.included(base)
     base.class_eval do
       def self.created_before(date)
@@ -27,6 +28,7 @@ module Scopes
       end
     end
   end
+  
 end
 
 ActiveRecord::Base.send(:include, Scopes)
