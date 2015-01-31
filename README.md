@@ -43,14 +43,14 @@ MyModel.updated_between(Time.now - 1.week, Time.now)
 ## To Do
 
 - Tests!
-- Support other ORMs (Mongoid, <insert-more-here>)
+- Support other ORMs (Mongoid, 'insert-more-here')
 - Add Error Handling
 - Support user-defined date/time columns (through configuration)
 - Support configuration for enabling/disabling Season for all models
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/season/fork )
+1. Fork it ( https://github.com/joaodiogocosta/season/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
