@@ -1,5 +1,12 @@
 require "season/version"
+require "season/active_record/scopes"
 
 module Season
-  # Your code goes here...
+  
+  if defined? ActiveRecord
+    class ActiveRecord::Base
+      include Scopes
+    end
+  end
+
 end

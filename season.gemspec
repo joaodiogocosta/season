@@ -6,10 +6,10 @@ require 'season/version'
 Gem::Specification.new do |spec|
   spec.name          = "season"
   spec.version       = Season::VERSION
-  spec.authors       = ["TODO: Write your name"]
+  spec.authors       = ["Joao Diogo Costa"]
   spec.email         = ["jdscosta91@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Season lets you query your ActiveRecord models by a specified period of time in an easier way.}
+  spec.description   = %q{ }
   spec.homepage      = ""
   spec.license       = "MIT"
 
