@@ -1,6 +1,6 @@
 require "season/version"
 require "season/active_record/scopes" if defined? ActiveRecord
 
-module Season
-
+if Season.configuration.include_by_default
+  ActiveRecord::Base.send(:include, Scopes)
 end
