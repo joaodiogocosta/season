@@ -7,7 +7,7 @@ Season let's you easily query your Models by a specific date/time.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'season'
+gem 'season', '~> 0.0.3'
 ```
 
 And then execute:
