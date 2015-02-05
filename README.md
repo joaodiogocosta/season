@@ -31,7 +31,12 @@ Right now, Season gives you the following helper methods:
 ```ruby
 # You can pass instances of Time/DateTime/String as arguments
 
-class User < ActiveRecord::Base; end
+class User < ActiveRecord::Base
+  include Season::Scopes
+
+  ...
+  
+end
 
 User.created_before(Time.now)
 User.created_after(DateTime.now)
