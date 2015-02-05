@@ -44,20 +44,22 @@ User.updated_between(Time.now - 1.week, Time.now)
 
 ## Configuration
 
-The scopes are included by default in all of your models since they inherit from `ActiveRecord::Base`. To avoid this behaviour add the following code within an initializer - `config/initializers/season.rb`:
+The scopes are not included by default in your models. To use them you need to include it yourself:
 
 ```ruby
-Season.configure do |config|
-  config.include_by_default = false
-end
-
-And then in your model(s):
-
 Class User < ActiveRecord::Base
   include Season::Scopes
 
   ...
-  
+
+end 
+```
+
+If you want them to be available on all of your models by default, add the following code within an initializer - `config/initializers/season.rb`:
+
+```ruby
+Season.configure do |config|
+  config.include_by_default = true
 end 
 ``` 
 
