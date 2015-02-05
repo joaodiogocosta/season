@@ -16,7 +16,7 @@ module Season
       @configuration ||= Configuration.new
     end
 
-    def self.configure
+    def configure
       yield configuration
     end
 
