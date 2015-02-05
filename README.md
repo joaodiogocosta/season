@@ -35,8 +35,10 @@ class User < ActiveRecord::Base
   include Season::Scopes
 
   ...
-  
+
 end
+
+# And then use it as:
 
 User.created_before(Time.now)
 User.created_after(DateTime.now)
