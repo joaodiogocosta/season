@@ -5,20 +5,25 @@ module Season
     attr_accessor :include_by_default
 
     def initialize
-      @include_by_default = true
+      @include_by_default = false
     end
 
   end
-  
-  class << self
     
-    def configuration
-      @configuration ||= Configuration.new
-    end
-
-    def configure
-      yield configuration
-    end
-
+  def self.configuration
+    @configuration ||= Configuration.new
   end
+
+  def self.configure
+    yield configuration
+    auto_include_scopes
+  end
+
+  private
+
+    def self.auto_include_scopes
+      if configuration.include_by_default
+        ActiveRecord::Base.send(:include, Season::Scopes) if defined? ActiveRecord
+      end
+    end
 end
