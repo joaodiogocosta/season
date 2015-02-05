@@ -31,13 +31,34 @@ Right now, Season gives you the following helper methods:
 ```ruby
 # You can pass instances of Time/DateTime/String as arguments
 
-MyModel.created_before(Time.now)
-MyModel.created_after(DateTime.now)
-MyModel.created_between(Time.now - 1.week, '31-01-2015')
+class User < ActiveRecord::Base; end
 
-MyModel.updated_before(DateTime.now)
-MyModel.updated_after('01-01-2015')
-MyModel.updated_between(Time.now - 1.week, Time.now)
+User.created_before(Time.now)
+User.created_after(DateTime.now)
+User.created_between(Time.now - 1.week, '31-01-2015')
+
+User.updated_before(DateTime.now)
+User.updated_after('01-01-2015')
+User.updated_between(Time.now - 1.week, Time.now)
+```
+
+## Configuration
+
+The scopes are included by default in all of your models since they inherit from `ActiveRecord::Base`. To avoid this behaviour add the following code within an initializer - `config/initializers/season.rb`:
+
+```ruby
+Season.configure do |config|
+  config.include_by_default = false
+end
+
+And then in your model(s):
+
+Class User < ActiveRecord::Base
+  include Season::Scopes
+
+  ...
+  
+end 
 ``` 
 
 ## To Do
