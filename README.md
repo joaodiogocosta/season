@@ -47,7 +47,7 @@ User.updated_between(Time.now - 1.week, Time.now)
 The scopes are not included by default in your models. To use them you need to include it yourself:
 
 ```ruby
-Class User < ActiveRecord::Base
+class User < ActiveRecord::Base
   include Season::Scopes
 
   ...
