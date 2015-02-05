@@ -1,4 +1,5 @@
 require "season/version"
+require 'season/configuration'
 
 if defined? ActiveRecord
   require "season/active_record/scopes"
