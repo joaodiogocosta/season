@@ -52,25 +52,9 @@ User.updated_between(Time.now - 1.week, Time.now)
 
 They are chainable, so you can also do things like this:
 ```ruby
-# Include it in your models
 
-class User < ActiveRecord::Base
-  include Season::Scopes
-
-  ...
-
-end
-
-# And then use it as:
-# (Time/DateTime/String instances are allowed as arguments)
-
-User.created_before(Time.now)
-User.created_after(DateTime.now)
-User.created_between(Time.now - 1.week, '31-01-2015')
-
-User.updated_before(DateTime.now)
-User.updated_after('01-01-2015')
-User.updated_between(Time.now - 1.week, Time.now)
+User.where(id: [1, 2, 3]).created_before(Time.now)
+User.updated_after('01-01-2015').order(created_at: :asc)
 ```
 
 
