@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["jdscosta91@gmail.com"]
   spec.summary       = %q{Season lets you query your ActiveRecord models by a specified period of time in an easier way.}
   spec.description   = %q{Season lets you query your ActiveRecord models by a specified period of time in an easier way.}
-  spec.homepage      = "https://github.com/joaodiogocosta"
+  spec.homepage      = "https://github.com/joaodiogocosta/season"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
