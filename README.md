@@ -8,7 +8,7 @@ Season let's you easily query your Models by a specific date/time.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'season', '~> 0.0.6'
+gem 'season', '~> 0.1'
 ```
 
 And then execute:
@@ -21,7 +21,7 @@ Or install it yourself as:
 
 ## Requirements
 
-In this first version Season only supports ActiveRecord, but we plan to also support MongoID in a very short period of time.
+In this first version Season only supports ActiveRecord, but we plan to also support Mongoid in a very short period of time.
 
 ## Usage
 
@@ -77,11 +77,11 @@ end
 
 ## To Do
 
-- Tests!
+- Even more tests
 - Support other ORMs (Mongoid, 'insert-more-here')
 - Add Error Handling
+- Add helpers for instances (like `User.first.created_before?('01-02-2015')`)
 - Support user-defined date/time columns (through configuration)
-- Support configuration for enabling/disabling Season for all models
 
 ## Contributing
 
