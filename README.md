@@ -82,7 +82,7 @@ end
 - Add Error Handling
 - Add helpers for instances (like `User.first.created_before?('01-02-2015')`)
 - Add support for queries with joins
-- Support user-defined date/time columns (through configuration)
+- Support user-defined date/time columns
 
 ## Contributing
 
