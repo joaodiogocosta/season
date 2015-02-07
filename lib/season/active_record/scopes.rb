@@ -15,7 +15,6 @@ module Season
           where("#{table_name}.created_at > ?", date)
         end
 
-
         def self.updated_before(date)
           where("#{table_name}.updated_at < ?", date)
         end

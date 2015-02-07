@@ -1,4 +1,5 @@
 # Season
+[![Gem Version](https://badge.fury.io/rb/season.svg)](http://badge.fury.io/rb/season) [![Code Climate](https://codeclimate.com/github/joaodiogocosta/season/badges/gpa.svg)](https://codeclimate.com/github/joaodiogocosta/season)
 
 Season let's you easily query your Models by a specific date/time.
 
