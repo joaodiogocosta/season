@@ -4,3 +4,16 @@ rvm:
   - 2.0.0
   - 2.1.5
   - 2.2.0
+before_install:
+  - gem install bundler
+gemfile:
+  - Gemfile
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1.5
+  - 2.2.0
+notifications:
+  email:
+    recipients:
+      - jdscosta91@gmail.com
