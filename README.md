@@ -34,9 +34,7 @@ Right now, Season gives you the following helper methods:
 
 class User < ActiveRecord::Base
   include Season::Scopes
-
   ...
-
 end
 
 # And then use it as:
@@ -53,7 +51,6 @@ User.updated_between(Time.now - 1.week, Time.now)
 
 They are chainable, so you can also do things like this:
 ```ruby
-
 User.where(id: [1, 2, 3]).created_before(Time.now)
 User.updated_after('01-01-2015').order(created_at: :asc)
 ```
@@ -66,9 +63,7 @@ The scopes are not included by default in your models. To use them you need to i
 ```ruby
 class User < ActiveRecord::Base
   include Season::Scopes
-
   ...
-
 end 
 ```
 
