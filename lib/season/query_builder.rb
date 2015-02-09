@@ -5,22 +5,22 @@ module Season
       @adapter_class_name = adapter_class_name
     end
 
-    def build(table_name, column_name, *args)
-      self.send("#{adapter_class_name}_#{query_verb}", *args)
+    def build(table_name, column_name, query_verb)
+      self.send("#{@adapter_class_name}_#{query_verb}", table_name, column_name)
     end
 
     private
 
-      def active_record_before(date)
-        where("#{table_name}.#{column_name} < ?", date)
+      def active_record_before(table_name, column_name)
+        "where(" + "\"#{table_name}.#{column_name} < ?\"" + ", *args)"
       end
 
-      def active_record_between(start_date, end_date)
-        where("#{table_name}.#{column_name} > ? AND #{table_name}.#{column_name} < ?", start_date, end_date)
+      def active_record_between(table_name, column_name)
+        "where(" + "\"#{table_name}.#{column_name} > ? AND #{table_name}.#{column_name} < ?\"" + ", *args)"
       end
 
-      def active_record_after(date)
-        where("#{table_name}.#{column_name} > ?", date)
+      def active_record_after(table_name, column_name)
+        "where(" + "\"#{table_name}.#{column_name} > ?\"" + ", *args)"
       end
   end
 end

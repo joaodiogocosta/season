@@ -1,8 +1,6 @@
 module Season
   class ScopeBuilder
 
-    attr_accessor :query_builder
-
     def initialize(klass)
       @klass = klass
       @query_builder = QueryBuilder.new(adapter_class_name)
@@ -10,8 +8,10 @@ module Season
 
     def build(table_name, column_name, query_verb)
       unless method_exists?(column_name)
+        query_str = @query_builder.build(table_name, column_name, query_verb)
+        
         @klass.define_singleton_method "#{column_name}_#{query_verb}" do |*args|
-          @query_builder.build(table_name, column_name, *args)
+          eval(query_str)
         end
       end
     end

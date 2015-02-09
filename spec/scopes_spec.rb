@@ -47,4 +47,8 @@ RSpec.describe Season do
       .with(1).argument
     expect(subject).to respond_to(:updated_between).with(2).arguments
   end
+
+  it 'has legacy scopes' do
+    expect(subject.created_at_before(Time.now)).to eq([])
+  end
 end
