@@ -1,14 +1,15 @@
 # Season
 [![Gem Version](https://badge.fury.io/rb/season.svg)](http://badge.fury.io/rb/season) [![Code Climate](https://codeclimate.com/github/joaodiogocosta/season/badges/gpa.svg)](https://codeclimate.com/github/joaodiogocosta/season) [![Build Status](https://travis-ci.org/joaodiogocosta/season.svg?branch=master)](https://travis-ci.org/joaodiogocosta/season)
 
-Season let's you easily query your Models by a specific date/time.
+Season automatically creates scopes for your models' datetime columns.
+How many times have you done ugly things like `where("users.created_at" > ?", some_date)`? If you ever built an REST API with endpoints that return a list of records, I'm sure you've done plenty of this, and that's why Season exists.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'season', '~> 0.1'
+gem 'season', '~> 0.2'
 ```
 
 And then execute:
@@ -25,28 +26,30 @@ In this first version Season only supports ActiveRecord, but we plan to also sup
 
 ## Usage
 
-Season assumes your models have timestamps columns (created_at and updated_at) and uses these to do its magic.
+To use Season scopes just append `_before`, `_after` or `_between` to your datetime column names and pass the arguments accordingly. See this:
 
-Right now, Season gives you the following helper methods:
-
+1. First, include Season in your model(s):
 ```ruby
-# Include it in your models
-
 class User < ActiveRecord::Base
-  include Season::Scopes
+  include Season
   ...
 end
 
-# And then use it as:
-# (Time/DateTime/String instances are allowed as arguments)
+2. And considering that our `User` class has three datetime columns named `:created_at`, `:updated_at` and `:confirmed_at`, the following scopes will be automatically available: 
+```ruby
+# * Time/DateTime/String instances are allowed as arguments.
 
-User.created_before(Time.now)
-User.created_after(DateTime.now)
-User.created_between(Time.now - 1.week, '31-01-2015')
+User.created_at_before(Time.now)
+User.created_at_after(DateTime.now)
+User.created_at_between(Time.now - 1.week, '31-01-2015')
 
-User.updated_before(DateTime.now)
-User.updated_after('01-01-2015')
-User.updated_between(Time.now - 1.week, Time.now)
+User.updated_at_before(DateTime.now)
+User.updated_at_after('01-01-2015')
+User.updated_at_between(Time.now - 1.week, Time.now)
+
+User.confirmed_at_before(DateTime.now)
+User.confirmed_at_after('01-01-2015')
+User.confirmed_at_between(Time.now - 1.week, Time.now)
 ```
 
 They are chainable, so you can also do things like this:

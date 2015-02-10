@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Season::VERSION
   spec.authors       = ["Joao Diogo Costa"]
   spec.email         = ["jdscosta91@gmail.com"]
-  spec.summary       = %q{Season lets you query your ActiveRecord models by a specified period of time in an easier way.}
-  spec.description   = %q{Season lets you query your ActiveRecord models by a specified period of time in an easier way.}
+  spec.summary       = %q{Season automatically creates scopes for your models' datetime columns.}
+  spec.description   = %q{Season automatically creates scopes for your models' datetime columns.}
   spec.homepage      = "https://github.com/joaodiogocosta/season"
   spec.license       = "MIT"
 
