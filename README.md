@@ -28,7 +28,7 @@ In this first version Season only supports ActiveRecord, but we plan to also sup
 
 To use Season scopes just append `_before`, `_after` or `_between` to your datetime column names and pass the arguments accordingly. See this:
 
-1. First, include Season in your model(s):
+First, include Season in your model(s):
 ```ruby
 class User < ActiveRecord::Base
   include Season
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 end
 ```
 
-2. And considering that our `User` class has three datetime columns named `:created_at`, `:updated_at` and `:confirmed_at`, the following scopes will be automatically available: 
+Now, considering that our `User` class has three datetime columns named `:created_at`, `:updated_at` and `:confirmed_at`, the following scopes will be automatically available: 
 ```ruby
 # * Time/DateTime/String instances are allowed as arguments.
 
@@ -48,9 +48,9 @@ User.updated_at_before(DateTime.now)
 User.updated_at_after('01-01-2015')
 User.updated_at_between(Time.now - 1.week, Time.now)
 
-User.confirmed_at_before(DateTime.now)
-User.confirmed_at_after('01-01-2015')
-User.confirmed_at_between(Time.now - 1.week, Time.now)
+User.confirmed_at_before('01-01-2015')
+User.confirmed_at_after(DateTime.now)
+User.confirmed_at_between(Time.now - 1.year, Time.now - 1.week)
 ```
 
 They are chainable, so you can also do things like this:
@@ -59,26 +59,6 @@ User.where(id: [1, 2, 3]).created_before(Time.now)
 User.updated_after('01-01-2015').order(created_at: :asc)
 ```
 
-
-## Configuration
-
-The scopes are not included by default in your models. To use them you need to include it yourself:
-
-```ruby
-class User < ActiveRecord::Base
-  include Season::Scopes
-  ...
-end 
-```
-
-If you want them to be available on all of your models by default, add the following code within an initializer - `config/initializers/season.rb`:
-
-```ruby
-Season.configure do |config|
-  config.include_by_default = true
-end 
-``` 
-
 ## To Do
 
 - Even more tests
@@ -86,7 +66,6 @@ end
 - Add Error Handling
 - Add helpers for instances (like `User.first.created_before?('01-02-2015')`)
 - Add support for queries with joins
-- Support user-defined date/time columns
 
 ## Contributing
 
