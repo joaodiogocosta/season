@@ -40,7 +40,7 @@ end
 
 Now, considering that our `User` class has three datetime/date/timestamp columns named `:created_at`, `:updated_at` and `:confirmed_at`, the following scopes will be automatically available: 
 ```ruby
-# * Time/DateTime/String instances are allowed as arguments.
+# * Time/Date/DateTime/String instances are allowed as arguments.
 
 User.created_at_before(Time.now)
 User.created_at_after(DateTime.now)
