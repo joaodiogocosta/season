@@ -1,13 +1,12 @@
-require "season/version"
-require "season/configuration"
-require "season/legacy"
-require "season/scope_builder"
-require "season/query_builder"
-require "season/instance_method_builder"
+require 'season/version'
+require 'season/configuration'
+require 'season/legacy'
+require 'season/scope_builder'
+require 'season/query_builder'
+require 'season/instance_method_builder'
 
 module Season
-
-  QUERY_VERBS = ['before', 'after', 'between']
+  QUERY_VERBS = %w(before after between)
 
   def self.included(base)
     base.extend(ClassMethods)
@@ -43,4 +42,3 @@ module Season
     File.expand_path '../..', __FILE__
   end
 end
-

@@ -1,6 +1,6 @@
 require 'season'
 require 'database_cleaner'
-require "codeclimate-test-reporter"
+require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 
 RSpec.configure do |config|

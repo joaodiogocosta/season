@@ -9,7 +9,7 @@ How many times have you done ugly things like `where("users.created_at" > ?", so
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'season', '~> 0.2'
+gem 'season', '~> 0.3'
 ```
 
 And then execute:

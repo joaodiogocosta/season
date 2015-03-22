@@ -1,6 +1,5 @@
 module Season
   class ScopeBuilder
-
     def initialize(klass)
       @klass = klass
       @query_builder = QueryBuilder.new(adapter_class_name)
@@ -10,7 +9,7 @@ module Season
       unless method_exists?(column_name)
         query_str = @query_builder.build(table_name, column_name, query_verb)
 
-        @klass.instance_eval %Q{
+        @klass.instance_eval %{
           def #{column_name}_#{query_verb}(*args)
             #{query_str}
           end
@@ -20,13 +19,13 @@ module Season
 
     private
 
-    def method_exists?(column_name)
+    def method_exists?(_column_name)
       defined? @klass.column_name
     end
 
     def adapter_class_name
       return 'active_record' if @klass < ActiveRecord::Base
-      raise "Database adapter not supported."
+      fail 'Database adapter not supported.'
     end
 
     # def remove_old_suffix(text)

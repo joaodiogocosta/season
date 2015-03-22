@@ -58,7 +58,6 @@ RSpec.describe Season do
   end
 
   describe 'datetime scopes' do
-
     let(:instant) { DateTime.parse('01-01-2015') }
 
     before do
@@ -80,7 +79,6 @@ RSpec.describe Season do
   end
 
   describe 'defined datetime instance methods' do
-
     let(:user) { User.new }
 
     it 'of datetime type' do
@@ -103,9 +101,8 @@ RSpec.describe Season do
   end
 
   describe 'datetime instance methods' do
-
     let(:instant) { DateTime.parse('01-01-2015') }
-    let(:user) { User.create!(created_at: instant) }
+    let!(:user) { User.create!(created_at: instant) }
 
     it "shows correct results for 'before'" do
       expect(user.created_at_before?(instant + 1.day)).to eq(true)

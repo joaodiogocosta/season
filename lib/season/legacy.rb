@@ -29,4 +29,3 @@ module Season
     end
   end
 end
-
