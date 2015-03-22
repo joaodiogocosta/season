@@ -1,4 +1,5 @@
 require 'season'
+require 'database_cleaner'
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
@@ -9,5 +10,18 @@ RSpec.configure do |config|
 
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
+  end
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean_with :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 end

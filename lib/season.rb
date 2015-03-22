@@ -3,6 +3,7 @@ require "season/configuration"
 require "season/legacy"
 require "season/scope_builder"
 require "season/query_builder"
+require "season/instance_method_builder"
 
 module Season
 
@@ -11,22 +12,35 @@ module Season
   def self.included(base)
     base.extend(ClassMethods)
 
-    mb = ScopeBuilder.new(base)
-
+    # Define scopes
+    sb = ScopeBuilder.new(base)
     base.class_eval do
-      # DEFINE SCOPES DINAMICALLY
-      base.datetime_column_names.each do |column_name|
+      base.date_or_time_column_names.each do |column_name|
         QUERY_VERBS.each do |query_verb|
-          mb.build(table_name, column_name, query_verb)
+          sb.build(table_name, column_name, query_verb)
+        end
+      end
+    end
+
+    # Define instance methods
+    imb = InstanceMethodBuilder.new(base)
+    base.class_eval do
+      base.date_or_time_column_names.each do |column_name|
+        QUERY_VERBS.each do |query_verb|
+          imb.build(table_name, column_name, query_verb)
         end
       end
     end
   end
 
   module ClassMethods
-    def datetime_column_names
-      columns.map { |c| c.name if c.type == :datetime }.compact
+    def date_or_time_column_names
+      columns.map { |c| c.name if c.type == :datetime || c.type == :date }.compact
     end
+  end
+
+  def self.root
+    File.expand_path '../..', __FILE__
   end
 end
 
