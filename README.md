@@ -1,7 +1,7 @@
 # Season
 [![Gem Version](https://badge.fury.io/rb/season.svg)](http://badge.fury.io/rb/season) [![Code Climate](https://codeclimate.com/github/joaodiogocosta/season/badges/gpa.svg)](https://codeclimate.com/github/joaodiogocosta/season) [![Build Status](https://travis-ci.org/joaodiogocosta/season.svg?branch=master)](https://travis-ci.org/joaodiogocosta/season)
 
-Season automatically creates scopes for your models' datetime columns.
+Season automatically creates scopes for ActiveRecord date, datetime and timestamp attributes.
 How many times have you done ugly things like `where("users.created_at" > ?", some_date)`? If you ever built a REST API with endpoints that return a list of records, I'm sure you've done plenty of this. And that's why Season exists.
 
 ## Installation
@@ -38,7 +38,7 @@ end
 
 ### Scopes
 
-Now, considering that our `User` class has three datetime columns named `:created_at`, `:updated_at` and `:confirmed_at`, the following scopes will be automatically available: 
+Now, considering that our `User` class has three datetime/date/timestamp columns named `:created_at`, `:updated_at` and `:confirmed_at`, the following scopes will be automatically available: 
 ```ruby
 # * Time/DateTime/String instances are allowed as arguments.
 
