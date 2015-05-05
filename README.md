@@ -60,8 +60,8 @@ User.confirmed_at_between(Time.now - 1.year, Time.now - 1.week)
 
 They are chainable, so you can also do things like this:
 ```ruby
-User.where(id: [1, 2, 3]).created_before(Time.now)
-User.updated_after('01-01-2015').order(created_at: :asc)
+User.where(id: [1, 2, 3]).created_at_before(Time.now)
+User.updated_at_after('01-01-2015').order(created_at: :asc)
 ```
 
 ### Instance methods
